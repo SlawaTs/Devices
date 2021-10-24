@@ -1,4 +1,4 @@
-import {Button, Form} from 'antd';
+import {Button, Form, message} from 'antd';
 import React from 'react';
 import 'antd/dist/antd.css'
 import {observer} from 'mobx-react-lite';
@@ -6,6 +6,7 @@ import {CustomSelect} from "../../components/CustomSelect";
 import {Group, Manufacturer, Model, OS, Status, Type} from "../../moks/Data";
 import DataDevices from "../../store/devices";
 import {NavLink} from "react-router-dom";
+import './EditPage.css'
 
 
 function EditPage(props) {
@@ -27,15 +28,16 @@ function EditPage(props) {
     }
     const editDevice = () => {
         editDevices(item, key);
+        message.success('Changes saved');
     }
 
     return (
-        <>
-            <Form
-                onFinish={editDevice}
-            >
-                <Form.Item label="Form Layout">
-                </Form.Item>
+        <div className="content-page__edit">
+            <Form onFinish={editDevice}>
+                <h1>
+                    Edit device
+                </h1>
+                <div className="form-content__edit">
                 <Form.Item label="Manufacturer">
                     <CustomSelect items={Manufacturer}
                                   nameItems="manufacturer"
@@ -84,26 +86,26 @@ function EditPage(props) {
                                   onChange={changeItems}
                                   defaultValue={item.status}/>
                 </Form.Item>
-
-                <Form.Item>
+                </div>
+                <Form.Item className="case-button__edit">
                     <Button
+                        className="button-item__edit"
                         type="primary"
                         htmlType="submit"
-                        style={{marginBottom: 16}}
                     >
                         Save
                     </Button>
                     <NavLink to={`/`}>
                         <Button
+                            className="button-item__edit"
                             type="primary"
-                            style={{marginBottom: 16}}
                         >
                             List devices
                         </Button>
                     </NavLink>
                 </Form.Item>
             </Form>
-        </>
+        </div>
     );
 };
 

@@ -2,14 +2,16 @@ import {Descriptions, Badge, Button} from 'antd';
 import {observer} from "mobx-react-lite";
 import DataDevices from "../../store/devices";
 import {NavLink} from "react-router-dom";
+import './DetailsPage.css'
 
 function detailDevice(props) {
     let {devices} = DataDevices;
     let {key} = props.match.params;
     let item = devices.find(pr => pr.key === key);
 
-    return <>
-        <Descriptions title="Device info" bordered>
+    return <div className="detail-page__detail">
+        <h1>Device info</h1>
+        <Descriptions bordered>
             <Descriptions.Item label="Manufacturer:">{item.manufacturer}</Descriptions.Item>
             <Descriptions.Item label="Model:">{item.model}</Descriptions.Item>
             <Descriptions.Item label="IP address:">{item.ip}</Descriptions.Item>
@@ -35,8 +37,10 @@ function detailDevice(props) {
                 Region: East China 1<br/>
             </Descriptions.Item>
         </Descriptions>
+        <div className="case-button__detail">
         <NavLink to={`/edit/${key}`}>
             <Button
+                className='button-item__detail'
                 type="primary"
                 style={{marginBottom: 16}}
             >
@@ -45,13 +49,15 @@ function detailDevice(props) {
         </NavLink>
         <NavLink to={`/`}>
             <Button
+                className='button-item__detail'
                 type="primary"
                 style={{marginBottom: 16}}
             >
                 List devices
             </Button>
         </NavLink>
-    </>
+        </div>
+    </div>
 }
 
 export default observer(detailDevice)

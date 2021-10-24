@@ -1,0 +1,22 @@
+.content-page__edit{
+    margin: 1em;
+}
+.form-content__edit{
+    display: flex;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.ant-form-item-label{
+    width: 120px;
+}
+.case-button__edit{
+    width: 260px;
+margin: 1em 1em 1em auto;
+}
+.button-item__edit{
+    margin: 1em;
+    marginBottom: 16
+}

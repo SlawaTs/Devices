@@ -21,12 +21,12 @@ export const CustomSelect = ({items, defaultValue, mode, nameItems, onChange, ad
 
     return (
         <Select
+            placeholder={`Enter ${nameItems}`}
             mode={mode}
             onChange={value => {
                 onChange(nameItems, value)
             }}
             style={{width: 240}}
-            placeholder=""
             defaultValue={defaultValue}
             dropdownRender={menu => (
                 <div>

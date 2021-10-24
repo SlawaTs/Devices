@@ -1,4 +1,4 @@
-import {Space, Popconfirm, Table, Button, Tag} from 'antd';
+import {Space, Popconfirm, Table, Button, Tag, Pagination, Popover} from 'antd';
 import React from 'react';
 import DataDevices from './../../store/devices';
 import 'antd/dist/antd.css'
@@ -8,11 +8,8 @@ import {NavLink} from "react-router-dom";
 import {history} from "../../utils/history";
 import {toJS, values} from "mobx";
 import Search from "antd/es/input/Search";
-import {DeleteTwoTone,
-    EditTwoTone,
-    ProfileTwoTone,
-    ReadOutlined
-} from "@ant-design/icons";
+import {DeleteTwoTone, EditTwoTone, ProfileTwoTone, ReadOutlined} from "@ant-design/icons";
+import './ListPage.css'
 
 function listDevices() {
 
@@ -26,7 +23,7 @@ function listDevices() {
         </>)
     }
     const filtedGroup = (value, record) => {
-        if (devices.includes(value))
+        if (record.group.includes(value))
             return true
     }
     const onSearch = (value, record) => {
@@ -110,13 +107,19 @@ function listDevices() {
             render: (record) => (
                 <Space size="middle">
                     <NavLink to={`/detail/${record.key}`}>
-                    <ProfileTwoTone/>
+                        <Popover content="Detail">
+                            <ProfileTwoTone/>
+                        </Popover>
                     </NavLink>
                     <NavLink to={`/edit/${record.key}`}>
+                        <Popover content="Edit">
                         <EditTwoTone/>
+                        </Popover>
                     </NavLink>
                     <Popconfirm title="Sure to delete?" onConfirm={() => deleteDevice(record.key)}>
+                        <Popover content="Delete">
                         <DeleteTwoTone/>
+                        </Popover>
                     </Popconfirm>
                 </Space>
             ),
@@ -124,8 +127,10 @@ function listDevices() {
     ];
     let {devices, searchDevices, deleteDevice} = DataDevices;
 
-    return <>
-
+    return <div className="list-page">
+        <h1>
+            Complete list of devices
+        </h1>
         <div style={{display: 'flex', alignItems: 'center',}}>
             <Button
                 onClick={() => history.push('/add')}
@@ -142,8 +147,8 @@ function listDevices() {
                 onSearch={(value) => searchDevices(value)}
             /></div>
 
-        <Table columns={columns} dataSource={devices}/>
-    </>
+        <Table columns={columns} dataSource={devices} pagination={{showSizeChanger: true}}/>
+    </div>
 };
 
 export default observer(listDevices)
