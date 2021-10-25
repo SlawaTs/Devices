@@ -1,11 +1,23 @@
 export let Manufacturer = [
     {
-        text: 'hp',
-        value: 'hp',
+        text: 'HP',
+        value: 'HP',
     },
     {
-        text: 'asus',
-        value: 'asus',
+        text: 'Asus',
+        value: 'Asus',
+    },
+    {
+        text: 'Canon',
+        value: 'Canon',
+    },
+    {
+        text: 'Epson',
+        value: 'Epson',
+    },
+    {
+        text: 'Xerox',
+        value: 'Xerox',
     },
 ];
 export let Model = [
@@ -16,6 +28,18 @@ export let Model = [
     {
         text: 'h3',
         value: 'h3',
+    },
+    {
+        text: 'mg46w',
+        value: 'mg46w',
+    },
+    {
+        text: 'p227',
+        value: 'p227',
+    },
+    {
+        text: '456dn',
+        value: '456dn',
     },
 ];
 export let OS = [
@@ -30,23 +54,35 @@ export let OS = [
 ];
 export let Group = [
     {
-        text: 'home',
-        value: 'home',
+        text: 'Home',
+        value: 'Home',
     },
     {
-        text: 'office',
-        value: 'office',
+        text: 'Office',
+        value: 'Office',
+    },
+    {
+        text: 'K35',
+        value: 'K35',
+    },
+    {
+        text: 'K62',
+        value: 'K62',
     },
 ];
 export let Type = [
     {
-        text: 'Windows',
-        value: 'Windows',
+        text: 'MFY',
+        value: 'MFY',
     },
     {
-        text: 'Linux',
-        value: 'Linux',
+        text: 'Printer',
+        value: 'Printer',
     },
+    {
+        text: 'Scanner',
+        value: 'Scanner',
+    }
 ];
 export let Status = [
     {
